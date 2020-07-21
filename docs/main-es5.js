@@ -1,5 +1,9 @@
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
   /***/
   "./$$_lazy_route_resource lazy recursive":
@@ -47,7 +51,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "Coming soon...";
+    __webpack_exports__["default"] = "<mat-toolbar class=\"position-fixed\">\r\n    <button mat-icon-button [matMenuTriggerFor]=\"menu\">\r\n        <mat-icon>menu</mat-icon>\r\n    </button>\r\n    <mat-menu #menu=\"matMenu\">\r\n        <button mat-menu-item (click)=\"createWork()\">\r\n            <mat-icon>add</mat-icon>\r\n            <span>Add</span>\r\n        </button>\r\n        <button mat-menu-item disabled>\r\n            <mat-icon>list</mat-icon>\r\n            <span>List</span>\r\n        </button>\r\n        <button mat-menu-item disabled>\r\n            <mat-icon>archive</mat-icon>\r\n            <span>Download all</span>\r\n        </button>\r\n        <button mat-menu-item disabled>\r\n            <mat-icon>unarchive</mat-icon>\r\n            <span>Upload all</span>\r\n        </button>\r\n    </mat-menu>\r\n    <span>Bread Work</span>\r\n    <span class=\"example-spacer\"></span>\r\n    <button mat-icon-button (click)=\"selectAll()\">\r\n        <mat-icon>check_box</mat-icon>\r\n    </button>\r\n    <button mat-icon-button (click)=\"unselectAll()\">\r\n        <mat-icon>check_box_outline_blank</mat-icon>\r\n    </button>\r\n    <button mat-icon-button (click)=\"fill()\" [ngStyle]=\"{color: color}\">\r\n        <mat-icon>format_paint</mat-icon>\r\n    </button>\r\n    <button mat-icon-button (click)=\"changeColor()\">\r\n        <mat-icon>color_lens</mat-icon>\r\n    </button>\r\n    <button mat-icon-button (click)=\"onZoomOut()\">\r\n        <mat-icon>zoom_out</mat-icon>\r\n    </button>\r\n    <button mat-icon-button (click)=\"onZoomIn()\">\r\n        <mat-icon>zoom_in</mat-icon>\r\n    </button>\r\n</mat-toolbar>\r\n<div class=\"pre-content\"></div>\r\n\r\n<app-work *ngIf=\"work\" [work]=\"work\" [scale]=\"scale\"></app-work>\r\n";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/work-create-dialog/work-create-dialog.component.html":
+  /*!***********************************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/work-create-dialog/work-create-dialog.component.html ***!
+    \***********************************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsWorkCreateDialogWorkCreateDialogComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<h1 mat-dialog-title>Create bead work</h1>\r\n<div mat-dialog-content>\r\n    <mat-form-field>\r\n        <mat-label>Work name</mat-label>\r\n        <input matInput [(ngModel)]=\"data.name\" type=\"text\" cdkFocusInitial>\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n        <mat-label>Columns</mat-label>\r\n        <input matInput [(ngModel)]=\"data.columns\" type=\"number\">\r\n    </mat-form-field>\r\n    <mat-form-field>\r\n        <mat-label>Rows</mat-label>\r\n        <input matInput [(ngModel)]=\"data.rows\" type=\"number\">\r\n    </mat-form-field>\r\n</div>\r\n<div mat-dialog-actions>\r\n    <button mat-button (click)=\"onClose()\">Cancel</button>\r\n    <button mat-button [mat-dialog-close]=\"data\">Ok</button>\r\n</div>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/components/work/work.component.html":
+  /*!*******************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/work/work.component.html ***!
+    \*******************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppComponentsWorkWorkComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"work\" [ngStyle]=\"{'width.px':work.beadWidth*scale*work.columns,'height.px':work.beadHeight*scale*work.rows}\">\n    <div class=\"work-row\" [ngStyle]=\"{'width.px':work.beadWidth*scale*work.columns,'height.px':work.beadHeight*scale}\" *ngFor=\"let r of work.beads\">\n        <div\n                *ngFor=\"let s of r\"\n                class=\"work-cell\"\n                [ngClass]=\"{selected: s.selected}\"\n                [ngStyle]=\"{'width.px':work.beadWidth*scale, 'background-color': s.bead ? s.bead.color : 'transparent'}\"\n                (click)=\"onBeadClick(s)\"></div>\n    </div>\n</div>\n<style>\n    .work {\n        border-left: solid rgba(128, 128, 128, 0.5) 1px;\n        border-bottom: solid rgba(128, 128, 128, 0.5) 1px;\n        box-sizing: border-box;\n\n        background-image: linear-gradient(45deg, #d7d7d7 25%, transparent 25%), linear-gradient(-45deg, #d7d7d7 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d7d7d7 75%), linear-gradient(-45deg, transparent 75%, #d7d7d7 75%);\n        background-size: 16px 16px;\n        background-position: 0 0, 0 8px, 8px -8px, -8px 0px;\n    }\n    .work-row {\n        height: 100px;\n        width: 100%;\n        /*border-top: solid rgba(0,0,0,0.5) 1px;*/\n        box-sizing: border-box;\n    }\n    .work-cell {\n        display: inline-block;\n        width: 50px;\n        height: inherit;\n        border-right: solid rgba(128, 128, 128, 0.5) 1px;\n        border-top: solid rgba(128, 128, 128, 0.5) 1px;\n        box-sizing: border-box;\n    }\n    .work-cell.selected:after {\n        position: absolute;\n        content: '';\n        border: rgba(255,255,0,0.5) 4px solid;\n        width: inherit;\n        height: inherit;\n        box-sizing: border-box;\n    }\n</style>\n";
     /***/
   },
 
@@ -671,7 +715,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */";
+    __webpack_exports__["default"] = ".position-fixed {\n  position: fixed;\n}\n\n.example-spacer {\n  flex: 1 1 auto;\n}\n\n@media screen and (max-width: 599px) {\n  .pre-content {\n    height: 56px;\n  }\n}\n\n@media screen and (min-width: 600px) {\n  .pre-content {\n    height: 64px;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvRDpcXHJlcG9zXFxiZWFkd29ya3NyYy9zcmNcXGFwcFxcYXBwLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxlQUFBO0FDQ0Y7O0FERUE7RUFDRSxjQUFBO0FDQ0Y7O0FERUE7RUFDRTtJQUNFLFlBQUE7RUNDRjtBQUNGOztBREVBO0VBQ0U7SUFDRSxZQUFBO0VDQUY7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wb3NpdGlvbi1maXhlZCB7XHJcbiAgcG9zaXRpb246IGZpeGVkXHJcbn1cclxuXHJcbi5leGFtcGxlLXNwYWNlciB7XHJcbiAgZmxleDogMSAxIGF1dG87XHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDU5OXB4KSB7XHJcbiAgLnByZS1jb250ZW50IHtcclxuICAgIGhlaWdodDogNTZweDtcclxuICB9XHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDYwMHB4KSB7XHJcbiAgLnByZS1jb250ZW50IHtcclxuICAgIGhlaWdodDogNjRweDtcclxuICB9XHJcbn0iLCIucG9zaXRpb24tZml4ZWQge1xuICBwb3NpdGlvbjogZml4ZWQ7XG59XG5cbi5leGFtcGxlLXNwYWNlciB7XG4gIGZsZXg6IDEgMSBhdXRvO1xufVxuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiA1OTlweCkge1xuICAucHJlLWNvbnRlbnQge1xuICAgIGhlaWdodDogNTZweDtcbiAgfVxufVxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgLnByZS1jb250ZW50IHtcbiAgICBoZWlnaHQ6IDY0cHg7XG4gIH1cbn0iXX0= */";
     /***/
   },
 
@@ -706,11 +750,123 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
 
-    var AppComponent = function AppComponent() {
-      _classCallCheck(this, AppComponent);
 
-      this.title = 'breadworksrc';
+    var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+    /* harmony import */
+
+
+    var _components_work_create_dialog_work_create_dialog_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./components/work-create-dialog/work-create-dialog.component */
+    "./src/app/components/work-create-dialog/work-create-dialog.component.ts");
+    /* harmony import */
+
+
+    var _models_work__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/work */
+    "./src/app/models/work.ts");
+    /* harmony import */
+
+
+    var _models_bead__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./models/bead */
+    "./src/app/models/bead.ts");
+
+    var AppComponent = /*#__PURE__*/function () {
+      function AppComponent(dialog) {
+        _classCallCheck(this, AppComponent);
+
+        this.dialog = dialog;
+        this.color = 'green';
+        this.scale = 10;
+        this.colorIndex = 0;
+        this.colors = ['green', 'pink', 'blue', 'white', 'black'];
+        this.work = new _models_work__WEBPACK_IMPORTED_MODULE_4__["Work"]();
+      }
+
+      _createClass(AppComponent, [{
+        key: "createWork",
+        value: function createWork() {
+          var _this = this;
+
+          var dialogRef = this.dialog.open(_components_work_create_dialog_work_create_dialog_component__WEBPACK_IMPORTED_MODULE_3__["WorkCreateDialogComponent"], {
+            width: '250px',
+            data: new _models_work__WEBPACK_IMPORTED_MODULE_4__["Work"]()
+          });
+          dialogRef.afterClosed().subscribe(function (result) {
+            if (result) {
+              result.refill();
+              _this.work = result;
+              console.log('work', _this.work);
+            }
+          });
+        }
+      }, {
+        key: "fill",
+        value: function fill() {
+          var _this2 = this;
+
+          this.work.beads.forEach(function (row) {
+            row.forEach(function (slot) {
+              if (slot.selected) {
+                if (!slot.bead) {
+                  slot.bead = new _models_bead__WEBPACK_IMPORTED_MODULE_5__["Bead"]();
+                }
+
+                slot.bead.color = _this2.color;
+              }
+            });
+          });
+        }
+      }, {
+        key: "selectAll",
+        value: function selectAll() {
+          this.work.beads.forEach(function (row) {
+            row.forEach(function (slot) {
+              slot.selected = true;
+            });
+          });
+        }
+      }, {
+        key: "unselectAll",
+        value: function unselectAll() {
+          this.work.beads.forEach(function (row) {
+            row.forEach(function (slot) {
+              slot.selected = false;
+            });
+          });
+        }
+      }, {
+        key: "onZoomIn",
+        value: function onZoomIn() {
+          this.scale += 1;
+        }
+      }, {
+        key: "onZoomOut",
+        value: function onZoomOut() {
+          this.scale -= 1;
+        }
+      }, {
+        key: "changeColor",
+        value: function changeColor() {
+          if (++this.colorIndex >= this.colors.length) {
+            this.colorIndex = 0;
+          }
+
+          this.color = this.colors[this.colorIndex];
+        }
+      }]);
+
+      return AppComponent;
+    }();
+
+    AppComponent.ctorParameters = function () {
+      return [{
+        type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"]
+      }];
     };
 
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -768,18 +924,385 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./app.component */
     "./src/app/app.component.ts");
+    /* harmony import */
+
+
+    var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/platform-browser/animations */
+    "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+    /* harmony import */
+
+
+    var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/flex-layout */
+    "./node_modules/@angular/flex-layout/esm2015/flex-layout.js");
+    /* harmony import */
+
+
+    var _components_work_create_dialog_work_create_dialog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ./components/work-create-dialog/work-create-dialog.component */
+    "./src/app/components/work-create-dialog/work-create-dialog.component.ts");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _components_work_work_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ./components/work/work.component */
+    "./src/app/components/work/work.component.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
     };
 
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _components_work_create_dialog_work_create_dialog_component__WEBPACK_IMPORTED_MODULE_7__["WorkCreateDialogComponent"], _components_work_work_component__WEBPACK_IMPORTED_MODULE_9__["WorkComponent"]],
+      entryComponents: [_components_work_create_dialog_work_create_dialog_component__WEBPACK_IMPORTED_MODULE_7__["WorkCreateDialogComponent"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_6__["FlexLayoutModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatIconModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatMenuModule"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatToolbarModule"]],
       providers: [],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
     })], AppModule);
     /***/
+  },
+
+  /***/
+  "./src/app/components/work-create-dialog/work-create-dialog.component.scss":
+  /*!*********************************************************************************!*\
+    !*** ./src/app/components/work-create-dialog/work-create-dialog.component.scss ***!
+    \*********************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppComponentsWorkCreateDialogWorkCreateDialogComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvd29yay1jcmVhdGUtZGlhbG9nL3dvcmstY3JlYXRlLWRpYWxvZy5jb21wb25lbnQuc2NzcyJ9 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/components/work-create-dialog/work-create-dialog.component.ts":
+  /*!*******************************************************************************!*\
+    !*** ./src/app/components/work-create-dialog/work-create-dialog.component.ts ***!
+    \*******************************************************************************/
+
+  /*! exports provided: WorkCreateDialogComponent */
+
+  /***/
+  function srcAppComponentsWorkCreateDialogWorkCreateDialogComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "WorkCreateDialogComponent", function () {
+      return WorkCreateDialogComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/esm2015/material.js");
+    /* harmony import */
+
+
+    var _models_work__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../models/work */
+    "./src/app/models/work.ts");
+
+    var WorkCreateDialogComponent = /*#__PURE__*/function () {
+      function WorkCreateDialogComponent(dialogRef, data) {
+        _classCallCheck(this, WorkCreateDialogComponent);
+
+        this.dialogRef = dialogRef;
+        this.data = data;
+      }
+
+      _createClass(WorkCreateDialogComponent, [{
+        key: "onClose",
+        value: function onClose() {
+          this.dialogRef.close();
+        }
+      }]);
+
+      return WorkCreateDialogComponent;
+    }();
+
+    WorkCreateDialogComponent.ctorParameters = function () {
+      return [{
+        type: _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"]
+      }, {
+        type: _models_work__WEBPACK_IMPORTED_MODULE_3__["Work"],
+        decorators: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+          args: [_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"]]
+        }]
+      }];
+    };
+
+    WorkCreateDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-work-create-dialog',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./work-create-dialog.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/work-create-dialog/work-create-dialog.component.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./work-create-dialog.component.scss */
+      "./src/app/components/work-create-dialog/work-create-dialog.component.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"]))], WorkCreateDialogComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/components/work/work.component.scss":
+  /*!*****************************************************!*\
+    !*** ./src/app/components/work/work.component.scss ***!
+    \*****************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppComponentsWorkWorkComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvd29yay93b3JrLmNvbXBvbmVudC5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/components/work/work.component.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/components/work/work.component.ts ***!
+    \***************************************************/
+
+  /*! exports provided: WorkComponent */
+
+  /***/
+  function srcAppComponentsWorkWorkComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "WorkComponent", function () {
+      return WorkComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var WorkComponent = /*#__PURE__*/function () {
+      function WorkComponent() {
+        _classCallCheck(this, WorkComponent);
+      }
+
+      _createClass(WorkComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "onBeadClick",
+        value: function onBeadClick(slot) {
+          slot.selected = !slot.selected; // if (slot.bead) {
+          //     slot.bead = undefined;
+          // } else {
+          //     slot.bead = new Bead();
+          //     slot.bead.color = 'blue';
+          // }
+        }
+      }]);
+
+      return WorkComponent;
+    }();
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], WorkComponent.prototype, "work", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], WorkComponent.prototype, "scale", void 0);
+    WorkComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-work',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./work.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/components/work/work.component.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./work.component.scss */
+      "./src/app/components/work/work.component.scss"))["default"]]
+    })], WorkComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/models/bead-slot.ts":
+  /*!*************************************!*\
+    !*** ./src/app/models/bead-slot.ts ***!
+    \*************************************/
+
+  /*! exports provided: BeadSlot */
+
+  /***/
+  function srcAppModelsBeadSlotTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "BeadSlot", function () {
+      return BeadSlot;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var BeadSlot = function BeadSlot() {
+      _classCallCheck(this, BeadSlot);
+
+      this.selected = false;
+    };
+    /***/
+
+  },
+
+  /***/
+  "./src/app/models/bead.ts":
+  /*!********************************!*\
+    !*** ./src/app/models/bead.ts ***!
+    \********************************/
+
+  /*! exports provided: Bead */
+
+  /***/
+  function srcAppModelsBeadTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Bead", function () {
+      return Bead;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var Bead = function Bead() {
+      _classCallCheck(this, Bead);
+    };
+    /***/
+
+  },
+
+  /***/
+  "./src/app/models/work.ts":
+  /*!********************************!*\
+    !*** ./src/app/models/work.ts ***!
+    \********************************/
+
+  /*! exports provided: Work */
+
+  /***/
+  function srcAppModelsWorkTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Work", function () {
+      return Work;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _bead_slot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./bead-slot */
+    "./src/app/models/bead-slot.ts");
+
+    var Work = /*#__PURE__*/function () {
+      function Work() {
+        _classCallCheck(this, Work);
+
+        this.columns = 5;
+        this.name = 'New work';
+        this.rows = 5;
+        this.beadHeight = 5;
+        this.beadWidth = 3;
+        this.refill();
+      }
+
+      _createClass(Work, [{
+        key: "refill",
+        value: function refill() {
+          this.beads = [];
+
+          for (var ri = 0; ri < this.rows; ri++) {
+            var r = [];
+
+            for (var ci = 0; ci < this.columns; ci++) {
+              r.push(new _bead_slot__WEBPACK_IMPORTED_MODULE_1__["BeadSlot"]());
+            }
+
+            this.beads.push(r);
+          }
+        }
+      }]);
+
+      return Work;
+    }();
+    /***/
+
   },
 
   /***/
@@ -848,33 +1371,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var hammerjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! hammerjs */
+    "./node_modules/hammerjs/hammer.js");
+    /* harmony import */
+
+
+    var hammerjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_1__);
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
     /* harmony import */
 
 
-    var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/platform-browser-dynamic */
     "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
     /* harmony import */
 
 
-    var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _app_app_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./app/app.module */
     "./src/app/app.module.ts");
     /* harmony import */
 
 
-    var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./environments/environment */
     "./src/environments/environment.ts");
 
-    if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
-      Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
+    if (_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].production) {
+      Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["enableProdMode"])();
     }
 
-    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])["catch"](function (err) {
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_4__["AppModule"])["catch"](function (err) {
       return console.error(err);
     });
     /***/
